@@ -1,0 +1,130 @@
+nav {
+    background-color: hsl(0, 0%, 100%);
+}
+
+.nav_container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem clamp(3rem, 5vw, 6rem);
+}
+
+.nav_container .logo {
+    color: hsl(233, 26%, 24%);
+    font-family: "DM Serif Display", serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.nav_container ul {
+    color: gray;
+    display: flex;
+    font-weight: 500;
+    list-style-type: none;
+    justify-content: space-between;
+}
+
+li.middle {
+    margin: 0 clamp(1rem, 3vw, 4rem);
+}
+
+.buttons {
+    margin: auto 0;
+}
+
+.buttons > button {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 1.25rem;
+}
+
+.sign_up {
+    background: linear-gradient(
+        to right,
+        hsl(136, 65%, 51%),
+        hsl(192, 70%, 51%)
+    );
+    border-radius: 2rem;
+    color: hsl(0, 0%, 100%);
+    padding: 0.6rem 2rem;
+}
+
+.nav_container .log_in {
+    background: #acfcd915;
+    border: 0.5px solid hsl(233, 26%, 24%);
+    border-radius: 2rem;
+    color: hsl(233, 26%, 24%);
+    padding: 0.4rem 1.5rem;
+}
+
+.nav_container_mobile {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .nav_container {
+        padding: 0.5rem 3rem;
+    }
+
+    .hamburger-react {
+        display: block;
+    }
+
+    .nav_container {
+        display: none;
+    }
+
+    .nav_container.nav_container_mobile {
+        display: flex;
+    }
+
+    .menu_transperent_background {
+        background-color: rgba(0, 0, 0, 0.337);
+        backdrop-filter: blur(2px);
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 4rem;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .menu {
+        background-color: hsl(0, 0%, 100%);
+        border-radius: 0.5rem;
+        height: fit-content;
+        margin: 1.5rem 0;
+        padding: 2rem clamp(4rem, 14vw, 6rem);
+    }
+
+    .nav_container.nav_container_mobile ul {
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+
+    .nav_container.nav_container_mobile li {
+        margin: 0.7rem 0;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buttons > button {
+        margin: 0.5rem 0;
+    }
+
+    .display_none {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .nav_container {
+        padding: 0.5rem 1.6rem;
+    }
+}
