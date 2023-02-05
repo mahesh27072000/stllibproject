@@ -15,6 +15,7 @@ const Header = () => {
                 <ul>
                     <li>Home</li>
                     <li className="middle">Search</li>
+                    <li className="middle middle_two">Book Details</li>
                     <li>Cart</li>
                 </ul>
                 {/* Buttons for Sign up and Log in */}
@@ -40,6 +41,7 @@ const Header = () => {
                         <ul>
                             <li>Home</li>
                             <li className="middle">Search</li>
+                            <li>Book Details</li>
                             <li>Cart</li>
                         </ul>
                         {/* Buttons for Sign up and Log in */}

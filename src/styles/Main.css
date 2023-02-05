@@ -1,7 +1,7 @@
 .main_container {
     background-color: hsl(192, 70%, 51%);
     color: hsl(233, 26%, 24%);
-    padding: 1.5rem 1.6rem;
+    padding: 6rem 1.6rem 2rem;
 }
 
 .main_container .text_container {

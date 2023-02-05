@@ -1,5 +1,8 @@
 nav {
     background-color: hsl(0, 0%, 100%);
+    position: fixed;
+    width: 100%;
+    z-index: 1111;
 }
 
 .nav_container {
@@ -26,6 +29,10 @@ nav {
 
 li.middle {
     margin: 0 clamp(1rem, 3vw, 4rem);
+}
+
+li.middle_two {
+    margin-left: 0;
 }
 
 .buttons {
