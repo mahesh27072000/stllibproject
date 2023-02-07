@@ -98,6 +98,12 @@
     }
 }
 
+@media screen and (max-width: 625px) {
+    .radio_buttons {
+        flex-direction: column;
+    }
+}
+
 @media screen and (max-width: 325px) {
     .form_and_lower {
         padding: 2rem 1.25rem;
