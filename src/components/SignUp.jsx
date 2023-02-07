@@ -4,7 +4,7 @@ import Form from "./Form";
 const SignUp = () => {
     const [formField, setFormField] = useState({
         email: "",
-        identity: "",
+        identity: "user",
     });
     return (
         <Form>
@@ -49,6 +49,10 @@ const SignUp = () => {
                                         className="radio_input"
                                         type="radio"
                                         value="library staff"
+                                        checked={
+                                            "library staff" ===
+                                            formField.identity
+                                        }
                                         onChange={(event) =>
                                             setFormField({
                                                 ...formField,
@@ -66,6 +70,7 @@ const SignUp = () => {
                                     <input
                                         className="radio_input"
                                         type="radio"
+                                        checked={"user" === formField.identity}
                                         value="user"
                                         onChange={(event) =>
                                             setFormField({

@@ -11,12 +11,15 @@ const BookList = () => {
                         src="https://res.cloudinary.com/dj25aashz/image/upload/v1670968237/cld-sample-3.jpg"
                         alt="book"
                     />
-                    <div className="details">
-                        <p className="title">title</p>
-                        <p className="author">Author Rohtoa</p>
-                    </div>
 
-                    <button className="add_to_cart">View details</button>
+                    <div className="details_and_button">
+                        <div className="details">
+                            <p className="title">title</p>
+                            <p className="author">Author Rohtoa</p>
+                        </div>
+
+                        <button className="add_to_cart">View details</button>
+                    </div>
                 </div>
             </div>
         </div>

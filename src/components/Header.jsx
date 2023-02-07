@@ -71,13 +71,7 @@ const Header = () => {
                     </div>
                 </div>
                 {/* React Hamburger  */}
-                <Hamburger
-                    toggled={isOpen}
-                    toggle={setOpen}
-                    color={
-                        "linear-gradient(to right,hsl(136, 65%, 51%),hsl(192, 70%, 51%))"
-                    }
-                />
+                <Hamburger toggled={isOpen} toggle={setOpen} />
             </div>
         </nav>
     );

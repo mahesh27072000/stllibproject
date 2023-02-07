@@ -7,11 +7,8 @@
 }
 
 .book {
-    background: linear-gradient(124.4deg, #ffffff 10.8%, #ffffff 87.34%);
     border: 1px solid #d7d7d7;
-    border-radius: 1rem;
     margin: 0 auto 1.5rem;
-    padding: 1rem;
     width: fit-content;
 }
 
@@ -19,21 +16,12 @@ h2 {
     font-size: clamp(1.5rem, 4vw, 1.8rem);
 }
 
-h2::after {
-    background-color: hsl(136, 65%, 51%);
-    content: "";
-    display: block;
-    margin-top: 0.5rem;
-    width: 4rem;
-    height: 0.2rem;
-}
-
-.details {
+.details_and_button {
     margin-top: 1rem;
+    padding: 1rem;
 }
 
 .book_thumbnail {
-    border-radius: 1rem;
     width: 14rem;
 }
 
@@ -43,11 +31,7 @@ h2::after {
 }
 
 .add_to_cart {
-    background: linear-gradient(
-        to right,
-        hsl(136, 65%, 51%),
-        hsl(192, 70%, 51%)
-    );
+    background-color: hsl(233, 26%, 24%);
     border-radius: 2rem;
     color: hsl(0, 0%, 100%);
     margin-top: 1rem;

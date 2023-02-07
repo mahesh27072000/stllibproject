@@ -1,12 +1,9 @@
 .form_container {
-    background: url("https://res.cloudinary.com/dj25aashz/image/upload/v1675652397/fabian-irsara-67l-QujB14w-unsplash_1_pwj4ts.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    /* height: 100vh; */
+    background-color: hsl(233, 26%, 24%);
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
 }
 
 .form_inner_container {
@@ -29,13 +26,7 @@
     margin-top: 2rem;
 }
 
-.radio_buttons {
-    display: flex;
-    column-gap: 2rem;
-}
-
-.form input[type="text"],
-.radio_input_label {
+.form input[type="text"] {
     background-color: hsl(0, 0%, 100%);
     border: 1px solid hsl(233, 26%, 24%);
     border-radius: 1rem;
@@ -49,32 +40,16 @@
     width: 100%;
 }
 
-.radio_input_label {
-    display: block;
-    position: relative;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.radio_buttons {
+    margin-top: 0.8rem;
 }
 
-.radio_input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 2.6rem;
-    top: 0;
-    left: 0;
-    width: 17.8rem;
+.radio_input_label {
+    margin-right: 1rem;
 }
 
 .form .sign_up_button {
-    background: linear-gradient(
-        to right,
-        hsl(136, 65%, 51%),
-        hsl(192, 70%, 51%)
-    );
+    background: hsl(233, 26%, 24%);
     border-radius: 2rem;
     color: hsl(0, 0%, 100%);
     margin: 1.5rem 0;
@@ -95,12 +70,6 @@
     .form_and_lower {
         background-color: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(4px);
-    }
-}
-
-@media screen and (max-width: 625px) {
-    .radio_buttons {
-        flex-direction: column;
     }
 }
 
