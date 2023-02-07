@@ -49,14 +49,24 @@ const Header = () => {
                     <div className="menu">
                         {/* Navigation Items */}
                         <ul>
-                            <li>Home</li>
-                            <li className="middle">Search</li>
-                            <li>Cart</li>
+                            <li>
+                                <a href="/"> Home</a>
+                            </li>
+                            <li className="middle">
+                                <a href="/search"> Search</a>
+                            </li>
+                            <li>
+                                <a href="/cart"> Cart</a>
+                            </li>
                         </ul>
                         {/* Buttons for Sign up and Log in */}
                         <div className="buttons">
-                            <button className="log_in">Log in</button>
-                            <button className="sign_up">Sign Up</button>
+                            <a href="/login" className="log_in button">
+                                Log in
+                            </a>
+                            <a href="/signup" className="sign_up button">
+                                Sign Up
+                            </a>
                         </div>
                     </div>
                 </div>
