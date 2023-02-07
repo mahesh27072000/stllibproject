@@ -37,18 +37,6 @@
     width: 100%;
 }
 
-.search_icon {
-    align-self: flex-end;
-    background-color: hsl(192, 70%, 51%);
-    border-radius: 2rem;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    position: absolute;
-    padding: 0.25rem 0.7rem;
-    right: 1px;
-    top: 2px;
-}
-
 .search_icon > img {
     width: 1rem;
 }
