@@ -1,13 +1,10 @@
 import "../styles/Header.css";
 import React, { useState } from "react";
 import { Spiral as Hamburger } from "hamburger-react";
-import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     // state for toggling hamburger
     const [isOpen, setOpen] = useState(false);
-
-    const navigate = useNavigate();
 
     return (
         <nav>
@@ -29,12 +26,12 @@ const Header = () => {
                 </ul>
                 {/* Buttons for Sign up and Log in */}
                 <div className="buttons">
-                    <button onClick={navigate("/login")} className="log_in">
+                    <a href="/login" className="log_in button">
                         Log in
-                    </button>
-                    <button onClick={navigate("/signup")} className="sign_up">
+                    </a>
+                    <a href="/signup" className="sign_up button">
                         Sign Up
-                    </button>
+                    </a>
                 </div>
             </div>
 

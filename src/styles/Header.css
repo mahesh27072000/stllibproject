@@ -35,7 +35,7 @@ li.middle {
     margin: auto 0;
 }
 
-.buttons > button {
+.buttons > .button {
     font-size: 1rem;
     font-weight: 500;
     margin-left: 1.25rem;
