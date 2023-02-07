@@ -15,7 +15,8 @@ const BookList = () => {
                         <p className="title">title</p>
                         <p className="author">Author Rohtoa</p>
                     </div>
-                    <button className="add_to_cart">Add to cart</button>
+
+                    <button className="add_to_cart">View details</button>
                 </div>
             </div>
         </div>

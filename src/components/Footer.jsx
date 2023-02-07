@@ -9,7 +9,7 @@ const Footer = () => {
                     <li>Search</li>
                     <li>Cart</li>
                 </ul>
-                <div className="copyright">&c 2023</div>
+                <div className="copyright">All right reserved &copy;2023 </div>
             </div>
         </footer>
     );

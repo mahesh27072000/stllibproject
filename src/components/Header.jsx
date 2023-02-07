@@ -1,10 +1,14 @@
 import "../styles/Header.css";
 import React, { useState } from "react";
 import { Spiral as Hamburger } from "hamburger-react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     // state for toggling hamburger
     const [isOpen, setOpen] = useState(false);
+
+    const navigate = useNavigate();
+
     return (
         <nav>
             {/* Container for destop and tablet screens */}
@@ -13,15 +17,24 @@ const Header = () => {
                 <div className="logo">WebLib</div>
                 {/* Navigation Items */}
                 <ul>
-                    <li>Home</li>
-                    <li className="middle">Search</li>
-                    <li className="middle middle_two">Book Details</li>
-                    <li>Cart</li>
+                    <li>
+                        <a href="/"> Home</a>
+                    </li>
+                    <li className="middle">
+                        <a href="/search"> Search</a>
+                    </li>
+                    <li>
+                        <a href="/cart"> Cart</a>
+                    </li>
                 </ul>
                 {/* Buttons for Sign up and Log in */}
                 <div className="buttons">
-                    <button className="log_in">Log in</button>
-                    <button className="sign_up">Sign Up</button>
+                    <button onClick={navigate("/login")} className="log_in">
+                        Log in
+                    </button>
+                    <button onClick={navigate("/signup")} className="sign_up">
+                        Sign Up
+                    </button>
                 </div>
             </div>
 
@@ -41,7 +54,6 @@ const Header = () => {
                         <ul>
                             <li>Home</li>
                             <li className="middle">Search</li>
-                            <li>Book Details</li>
                             <li>Cart</li>
                         </ul>
                         {/* Buttons for Sign up and Log in */}

@@ -4,7 +4,7 @@ import BookList from "./BookList";
 const Main = () => {
     return (
         <main>
-            <article>
+            <article className="article_main_container">
                 <div className="main_container">
                     <div className="text_container">
                         <h1>Web Library Application</h1>

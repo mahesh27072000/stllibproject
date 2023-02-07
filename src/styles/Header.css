@@ -31,10 +31,6 @@ li.middle {
     margin: 0 clamp(1rem, 3vw, 4rem);
 }
 
-li.middle_two {
-    margin-left: 0;
-}
-
 .buttons {
     margin: auto 0;
 }
