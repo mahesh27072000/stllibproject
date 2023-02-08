@@ -43,15 +43,13 @@ li.middle {
 
 .sign_up {
     background: hsl(233, 26%, 24%);
-    border-radius: 2rem;
     color: hsl(0, 0%, 100%);
     padding: 0.6rem 2rem;
 }
 
 .nav_container .log_in {
     background: #acfcd915;
-    border: 0.5px solid hsl(233, 26%, 24%);
-    border-radius: 2rem;
+    border: 1px solid hsl(233, 26%, 24%);
     color: hsl(233, 26%, 24%);
     padding: 0.4rem 1.5rem;
 }

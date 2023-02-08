@@ -33,7 +33,6 @@
     font-weight: 500;
     padding-left: 1rem;
     margin-right: 1.7rem;
-    text-align: center;
     width: 100%;
 }
 
@@ -41,25 +40,8 @@
     width: 1rem;
 }
 
-.filter_container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 1.5rem auto 0;
-}
-
-.filter_container label {
-    margin-right: 1rem;
-}
-
 @media screen and (min-width: 768px) {
     .main_container.search_main_container {
         padding: 4rem 1.6rem;
-    }
-
-    .filter_container {
-        flex-direction: row;
-        margin: 1.5rem auto 0;
     }
 }

@@ -28,7 +28,12 @@ const Main = () => {
                 </article>
 
                 <article>
-                    <BookList />
+                    <BookList
+                        heading="Available Books"
+                        title="title"
+                        author="Author Rothoa"
+                        button="View details"
+                    />
                 </article>
             </main>
             <Footer />

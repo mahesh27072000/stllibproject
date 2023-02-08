@@ -4,18 +4,15 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-}
-
-.form_inner_container {
-    padding: 8rem 0 5rem;
+    padding: 5rem 0;
 }
 
 .form_and_lower {
-    background-color: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(2px);
-    border-radius: 1.25rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.25rem;
     padding: 2rem;
     margin: 4rem 1.6rem;
+    max-width: 40rem;
 }
 
 .form h1 {
@@ -64,13 +61,6 @@
 
 .form_and_lower_login {
     max-width: 36rem;
-}
-
-@media screen and (min-width: 600px) {
-    .form_and_lower {
-        background-color: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(4px);
-    }
 }
 
 @media screen and (max-width: 325px) {

@@ -20,9 +20,6 @@ const Header = () => {
                     <li className="middle">
                         <a href="/search"> Search</a>
                     </li>
-                    <li>
-                        <a href="/cart"> Cart</a>
-                    </li>
                 </ul>
                 {/* Buttons for Sign up and Log in */}
                 <div className="buttons">
@@ -55,9 +52,6 @@ const Header = () => {
                             <li className="middle">
                                 <a href="/search"> Search</a>
                             </li>
-                            <li>
-                                <a href="/cart"> Cart</a>
-                            </li>
                         </ul>
                         {/* Buttons for Sign up and Log in */}
                         <div className="buttons">
@@ -71,7 +65,7 @@ const Header = () => {
                     </div>
                 </div>
                 {/* React Hamburger  */}
-                <Hamburger toggled={isOpen} toggle={setOpen} />
+                <Hamburger toggled={isOpen} toggle={setOpen} duration={0} />
             </div>
         </nav>
     );

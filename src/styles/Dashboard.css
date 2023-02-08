@@ -1,0 +1,73 @@
+.section_container {
+    color: hsl(233, 26%, 24%);
+    padding: 6rem 1.6rem 2rem;
+}
+
+h1 {
+    font-size: clamp(2rem, 3vw, 3.5rem);
+}
+
+.cart,
+.user_list {
+    margin-top: 1.5rem;
+}
+
+.cart_item {
+    border: 1px solid #d7d7d7;
+    margin-top: 1rem;
+}
+
+.cart_item > img {
+    display: block;
+    margin: 0 auto;
+    width: 14rem;
+}
+
+.issue_and_cart_details {
+    margin: 2rem 2rem 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.book_title {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.issue_button {
+    font-size: 1.15rem;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+td,
+th {
+    border: 1px solid hsla(233, 26%, 24%, 0.274);
+    text-align: left;
+    padding: 8px;
+}
+
+tbody > tr:nth-child(even) {
+    background-color: hsla(233, 26%, 24%, 0.246);
+}
+
+@media screen and (min-width: 768px) {
+    .section_main_container {
+        padding: 4rem 0 2rem;
+    }
+
+    .section_container {
+        margin: 0 clamp(3rem, 5vw, 6rem);
+    }
+}
+
+@media screen and (min-width: 1050px) {
+    .section_main_container {
+        padding: 6rem 0 3rem;
+    }
+}

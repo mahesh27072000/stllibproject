@@ -1,9 +1,9 @@
 import "../styles/BookList.css";
 
-const BookList = () => {
+const BookList = ({ heading, title, author, button }) => {
     return (
         <div className="booklist_container">
-            <h2>Available Books</h2>
+            <h2>{heading}</h2>
             <div className="books_container">
                 <div className="book">
                     <img
@@ -14,11 +14,11 @@ const BookList = () => {
 
                     <div className="details_and_button">
                         <div className="details">
-                            <p className="title">title</p>
-                            <p className="author">Author Rohtoa</p>
+                            <p className="title">{title}</p>
+                            <p className="author">{author}</p>
                         </div>
 
-                        <button className="add_to_cart">View details</button>
+                        <button className="add_to_cart">{button}</button>
                     </div>
                 </div>
             </div>
