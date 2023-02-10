@@ -4,6 +4,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Dashboard = () => {
+    const [user, setUser] = useState({});
+    const getItem = (key) => {
+        const items = JSON.parse(localStorage.getItem(key));
+        return items;
+    };
+
+    useEffect(() => {
+        setUser(getItem("user").user);
+    }, []);
+
+    console.log(user.is_staff);
+
     const [formField, setFormField] = useState({
         category: "",
         title: "",
@@ -18,13 +30,13 @@ const Dashboard = () => {
                 "https://library-project-api.herokuapp.com/user_list/",
                 {
                     headers: {
-                        "WWW-Authenticate": `Bearer realm="api`,
+                        "WWW-Authenticate": `Bearer realm=api`,
                     },
                 }
             );
             console.log(response.data);
         } catch (err) {
-            console.log("data", err);
+            console.log("get user", err);
         }
     };
 
@@ -40,7 +52,7 @@ const Dashboard = () => {
             );
             console.log(response.data);
         } catch (err) {
-            console.log("data", err);
+            console.log("get books", err);
         }
     };
 
@@ -66,14 +78,14 @@ const Dashboard = () => {
             );
             console.log(response.data);
         } catch (err) {
-            console.log("data", err);
+            console.log("add books", err);
         }
     };
 
     const deleteBooks = async () => {
         try {
             const response = await axios.post(
-                "https://library-project-api.herokuapp.com/books/<int:pk>//",
+                "https://library-project-api.herokuapp.com/books/id",
                 {
                     headers: {
                         "WWW-Authenticate": `Bearer realm="api`,
@@ -87,6 +99,40 @@ const Dashboard = () => {
         }
     };
 
+    const returnBook = async () => {
+        try {
+            const response = await axios.post(
+                "https://library-project-api.herokuapp.com/books/id",
+                {
+                    headers: {
+                        "WWW-Authenticate": `Bearer realm="api`,
+                    },
+                },
+                post
+            );
+            console.log(response.data);
+        } catch (err) {
+            console.log("return", err);
+        }
+    };
+
+    const renewBook = async () => {
+        try {
+            const response = await axios.post(
+                "https://library-project-api.herokuapp.com/books/id",
+                {
+                    headers: {
+                        "WWW-Authenticate": `Bearer realm="api`,
+                    },
+                },
+                post
+            );
+            console.log(response.data);
+        } catch (err) {
+            console.log("renew", err);
+        }
+    };
+
     useEffect(() => {
         getUser();
         getBooks();
@@ -95,14 +141,16 @@ const Dashboard = () => {
     return (
         <section className="section_main_container">
             <div className="section_container">
-                <h1>Welcome User</h1>
-                {renderStaffDashboard(
-                    formField,
-                    setFormField,
-                    addBooks,
-                    deleteBooks
-                )}
-                {console.log(formField, addBooks)}
+                <h1>Welcome {user.username}</h1>
+                {user?.is_staff
+                    ? renderStaffDashboard(
+                          formField,
+                          setFormField,
+                          addBooks,
+                          deleteBooks,
+                          user
+                      )
+                    : renderUserDashboard(returnBook, renewBook, user)}
             </div>
         </section>
     );
@@ -112,10 +160,12 @@ const renderStaffDashboard = (
     formField,
     setFormField,
     addBooks,
-    deleteBooks
+    deleteBooks,
+    user
 ) => {
     return (
         <>
+            {console.log(user)}{" "}
             <div className="user_list">
                 <h2>List of users</h2>
                 <table>
@@ -245,47 +295,65 @@ const renderStaffDashboard = (
     );
 };
 
-const renderUserDashboard = () => {
+const renderUserDashboard = (returnBook, renewBook, user) => {
     return (
         <>
             <div className="cart">
                 <div className="issues">
                     <h2>Issues</h2>
-                    <div className="cart_item">
-                        <img
-                            src="https://res.cloudinary.com/dj25aashz/image/upload/v1670968237/cld-sample-3.jpg"
-                            alt="book"
-                        />
-                        <div className="issue_and_cart_details">
-                            <div className="cart_book_details">
-                                <p className="book_title">Tittle</p>
-                                <p>Category</p>
-                                <p>Author</p>
+                    {user.issues?.length !== 0 ? (
+                        <div className="cart_item">
+                            <img
+                                src="https://res.cloudinary.com/dj25aashz/image/upload/v1670968237/cld-sample-3.jpg"
+                                alt="book"
+                            />
+                            <div className="issue_and_cart_details">
+                                <div className="cart_book_details">
+                                    <p className="book_title">Tittle</p>
+                                    <p>Category</p>
+                                    <p>Author</p>
+                                </div>
+                                <button className="issue_button">Issue</button>
                             </div>
-                            <button className="issue_button">Issue</button>
                         </div>
-                    </div>
+                    ) : (
+                        <div className="no_item">No current Issues</div>
+                    )}
                 </div>
             </div>
 
             <div className="cart">
                 <div className="issues">
                     <h2>To be returned</h2>
-                    <div className="cart_item">
-                        <img
-                            src="https://res.cloudinary.com/dj25aashz/image/upload/v1670968237/cld-sample-3.jpg"
-                            alt="book"
-                        />
-                        <div className="issue_and_cart_details">
-                            <div className="cart_book_details">
-                                <p className="book_title">Tittle</p>
-                                <p>Category</p>
-                                <p>Author</p>
+                    {user.returns?.length !== 0 ? (
+                        <div className="cart_item">
+                            <img
+                                src="https://res.cloudinary.com/dj25aashz/image/upload/v1670968237/cld-sample-3.jpg"
+                                alt="book"
+                            />
+                            <div className="issue_and_cart_details">
+                                <div className="cart_book_details">
+                                    <p className="book_title">Tittle</p>
+                                    <p>Category</p>
+                                    <p>Author</p>
+                                </div>
+                                <button
+                                    onClick={() => returnBook}
+                                    className="issue_button"
+                                >
+                                    Return
+                                </button>
+                                <button
+                                    onClick={() => renewBook}
+                                    className="issue_button"
+                                >
+                                    Renew
+                                </button>
                             </div>
-                            <button className="issue_button">Return</button>
-                            <button className="issue_button">Renew</button>
                         </div>
-                    </div>
+                    ) : (
+                        <div className="no_item">No book to be return</div>
+                    )}
                 </div>
             </div>
             <BookList
@@ -297,6 +365,5 @@ const renderUserDashboard = () => {
         </>
     );
 };
-console.log(renderUserDashboard);
 
 export default Dashboard;

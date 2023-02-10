@@ -1,0 +1,44 @@
+.book_details_container {
+    color: hsl(233, 26%, 24%);
+    padding: 6rem 1.6rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95vh;
+}
+
+.book_details {
+    border: 1px solid #d7d7d7;
+    padding: 1.5rem;
+}
+
+.book_details_thumbnail {
+    width: 100%;
+}
+
+.book_details h2 {
+    font-size: clamp(1.85rem, 5vw, 2.5rem);
+}
+
+.book_details p {
+    font-size: clamp(1rem, 5vw, 1.25rem);
+}
+
+.lower {
+    margin-top: 1rem;
+}
+
+.link {
+    color: hsl(233, 64%, 35%);
+    font-size: 1.15rem;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    margin: 1rem 0;
+    margin-right: 1rem;
+}
+
+@media screen and (min-width: 530px) {
+    .book_details_thumbnail {
+        max-width: clamp(15rem, 60vw, 30rem);
+    }
+}

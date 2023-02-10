@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Search from "./components/Search";
 import Dashboard from "./components/Dashboard";
+import BookDetails from "./components/BookDetails";
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
             <Header />
             <Routes>
                 <Route path="/" element={<Main />} />
+                <Route path="/bookdetails" element={<BookDetails />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/login" element={<LogIn />} />

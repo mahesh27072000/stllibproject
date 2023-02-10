@@ -15,6 +15,7 @@ h1 {
 .cart_item {
     border: 1px solid #d7d7d7;
     margin-top: 1rem;
+    max-width: 20rem;
 }
 
 .cart_item > img {
@@ -35,6 +36,7 @@ h1 {
 }
 
 .issue_button {
+    color: hsl(233, 64%, 35%);
     font-size: 1.15rem;
     text-decoration: underline;
     text-underline-offset: 2px;

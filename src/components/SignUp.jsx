@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Form from "./Form";
 
 const SignUp = () => {
+    const [items, setItems] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate();
+    console.log(items);
     const [formField, setFormField] = useState({
         username: "",
         email: "",
@@ -18,8 +23,12 @@ const SignUp = () => {
         first_name: formField.first_name,
         last_name: formField.last_name,
         password: formField.password,
-        is_staff: formField.identity !== "user" ? false : true,
+        is_staff: formField.identity === "user" ? false : true,
     };
+
+    useEffect(() => {
+        localStorage.setItem("items", JSON.stringify(items));
+    }, [items]);
 
     const postLink =
         formField.identity === "user"
@@ -30,11 +39,18 @@ const SignUp = () => {
         console.log("here");
         try {
             const response = await axios.post(postLink, post);
-            console.log(response.data);
+            if (response.data.error === "Invalid credentials") {
+                setErrorMessage(response.data.error);
+            } else {
+                setItems(response.data);
+                navigate("/dashboard");
+            }
         } catch (err) {
             console.log("sign up", err);
         }
     };
+
+    console.log(items);
 
     return (
         <Form>
