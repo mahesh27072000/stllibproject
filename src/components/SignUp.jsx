@@ -36,26 +36,6 @@ const SignUp = () => {
         }
     };
 
-    const getUser = async () => {
-        try {
-            const response = await axios.get(
-                "https://library-project-api.herokuapp.com/user_list/",
-                {
-                    headers: {
-                        "WWW-Authenticate": `Bearer realm="api`,
-                    },
-                }
-            );
-            console.log(response.data);
-        } catch (err) {
-            console.log("data", err);
-        }
-    };
-
-    useEffect(() => {
-        getUser();
-    }, []);
-
     return (
         <Form>
             <div className="form_and_lower">

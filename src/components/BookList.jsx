@@ -1,6 +1,6 @@
 import "../styles/BookList.css";
 
-const BookList = ({ heading, title, author, button }) => {
+const BookList = ({ heading, title, author, button, onClickButton }) => {
     return (
         <div className="booklist_container">
             <h2>{heading}</h2>
@@ -18,7 +18,9 @@ const BookList = ({ heading, title, author, button }) => {
                             <p className="author">{author}</p>
                         </div>
 
-                        <button className="add_to_cart">{button}</button>
+                        <button onClick={onClickButton} className="add_to_cart">
+                            {button}
+                        </button>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,121 @@
 import "../styles/Dashboard.css";
 import BookList from "./BookList";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const renderStaffDashboard = () => {
+const Dashboard = () => {
+    const [formField, setFormField] = useState({
+        category: "",
+        title: "",
+        author: "",
+        ISBN: "",
+        publication_date: "",
+        number_of_copies: "",
+    });
+    const getUser = async () => {
+        try {
+            const response = await axios.get(
+                "https://library-project-api.herokuapp.com/user_list/",
+                {
+                    headers: {
+                        "WWW-Authenticate": `Bearer realm="api`,
+                    },
+                }
+            );
+            console.log(response.data);
+        } catch (err) {
+            console.log("data", err);
+        }
+    };
+
+    const getBooks = async () => {
+        try {
+            const response = await axios.get(
+                "https://library-project-api.herokuapp.com/books",
+                {
+                    headers: {
+                        "WWW-Authenticate": `Bearer realm="api`,
+                    },
+                }
+            );
+            console.log(response.data);
+        } catch (err) {
+            console.log("data", err);
+        }
+    };
+
+    const post = {
+        category: formField.category,
+        title: formField.title,
+        author: formField.author,
+        ISBN: formField.ISBN,
+        publication_date: formField.publication_date,
+        number_of_copies: formField.number_of_copies,
+    };
+
+    const addBooks = async () => {
+        try {
+            const response = await axios.post(
+                "https://library-project-api.herokuapp.com/books/",
+                {
+                    headers: {
+                        "WWW-Authenticate": `Bearer realm="api`,
+                    },
+                },
+                post
+            );
+            console.log(response.data);
+        } catch (err) {
+            console.log("data", err);
+        }
+    };
+
+    const deleteBooks = async () => {
+        try {
+            const response = await axios.post(
+                "https://library-project-api.herokuapp.com/books/<int:pk>//",
+                {
+                    headers: {
+                        "WWW-Authenticate": `Bearer realm="api`,
+                    },
+                },
+                post
+            );
+            console.log(response.data);
+        } catch (err) {
+            console.log("delete", err);
+        }
+    };
+
+    useEffect(() => {
+        getUser();
+        getBooks();
+    }, []);
+
+    return (
+        <section className="section_main_container">
+            <div className="section_container">
+                <h1>Welcome User</h1>
+                {renderStaffDashboard(
+                    formField,
+                    setFormField,
+                    addBooks,
+                    deleteBooks
+                )}
+                {console.log(formField, addBooks)}
+            </div>
+        </section>
+    );
+};
+
+const renderStaffDashboard = (
+    formField,
+    setFormField,
+    addBooks,
+    deleteBooks
+) => {
     return (
         <>
-            <h1> Staff Dashboard</h1>
-
             <div className="user_list">
                 <h2>List of users</h2>
                 <table>
@@ -35,7 +145,102 @@ const renderStaffDashboard = () => {
                 title="title"
                 author="Author Rothoa"
                 button="Delete book"
+                onClickButton={() => deleteBooks()}
             />
+            <div className="add_new_books">
+                <div className="form">
+                    <h2>Add a book</h2>
+                    <div className="input_field">
+                        <label htmlFor="category">
+                            Category
+                            <input
+                                type="text"
+                                placeholder="Category"
+                                onChange={(event) =>
+                                    setFormField({
+                                        ...formField,
+                                        category: event.target.value,
+                                    })
+                                }
+                            />
+                        </label>
+                        <label htmlFor="title">
+                            Title
+                            <input
+                                type="text"
+                                placeholder="Title"
+                                onChange={(event) =>
+                                    setFormField({
+                                        ...formField,
+                                        title: event.target.value,
+                                    })
+                                }
+                            />
+                        </label>
+
+                        <label htmlFor="author">
+                            Author
+                            <input
+                                type="text"
+                                placeholder="Author"
+                                onChange={(event) =>
+                                    setFormField({
+                                        ...formField,
+                                        Author: event.target.value,
+                                    })
+                                }
+                            />
+                        </label>
+
+                        <label htmlFor="ISBN">
+                            ISBN
+                            <input
+                                type="text"
+                                placeholder="example@email.com"
+                                onChange={(event) =>
+                                    setFormField({
+                                        ...formField,
+                                        ISBN: event.target.value,
+                                    })
+                                }
+                            />
+                        </label>
+
+                        <label htmlFor="publication_date">
+                            Publication date
+                            <input
+                                type="text"
+                                onChange={(event) =>
+                                    setFormField({
+                                        ...formField,
+                                        publication_date: event.target.value,
+                                    })
+                                }
+                            />
+                        </label>
+
+                        <label htmlFor="number_of_copies">
+                            Number of Copies
+                            <input
+                                type="text"
+                                onChange={(event) =>
+                                    setFormField({
+                                        ...formField,
+                                        number_of_copies: event.target.value,
+                                    })
+                                }
+                            />
+                        </label>
+
+                        <button
+                            className="sign_up_button"
+                            onClick={() => addBooks()}
+                        >
+                            Add Book
+                        </button>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };
@@ -43,7 +248,6 @@ const renderStaffDashboard = () => {
 const renderUserDashboard = () => {
     return (
         <>
-            <h1>User Dashboard</h1>
             <div className="cart">
                 <div className="issues">
                     <h2>Issues</h2>
@@ -94,13 +298,5 @@ const renderUserDashboard = () => {
     );
 };
 console.log(renderUserDashboard);
-
-const Dashboard = () => {
-    return (
-        <section className="section_main_container">
-            <div className="section_container">{renderStaffDashboard()}</div>
-        </section>
-    );
-};
 
 export default Dashboard;
