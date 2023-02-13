@@ -10,11 +10,16 @@ const changeDateFormat = (date) => {
     return date.split("-").reverse().join("/");
 };
 
-const UserDashboard = ({ bookList }) => {
+const UserDashboard = ({ bookList, user }) => {
     const [userDetails, setUserDetails] = useState(null);
 
     useEffect(() => {
-        setUserDetails(getItem("userDetails"));
+        if (getItem("userDetails") !== null) {
+            setUserDetails(getItem("userDetails"));
+        } else {
+            console.log(getItem("user"));
+            setUserDetails(getItem("user").user);
+        }
     }, []);
 
     return (
@@ -44,7 +49,7 @@ const UserDashboard = ({ bookList }) => {
                                                 : ""}
                                         </h3>
                                         <p className="book_detail">
-                                            Date of Issue:{" "}
+                                            Date of Issue:
                                             {changeDateFormat(
                                                 item.date_of_issue
                                             )}
@@ -86,14 +91,14 @@ const UserDashboard = ({ bookList }) => {
                                                     : ""}
                                             </h3>
                                             <p className="book_detail">
-                                                Date of Renewal:{" "}
+                                                Date of Renewal:
                                                 {changeDateFormat(
                                                     item.date_of_renewal
                                                 )}
                                             </p>
 
                                             <p className="book_detail">
-                                                Date Due:{" "}
+                                                Date Due:
                                                 {changeDateFormat(
                                                     item.due_date
                                                 )}

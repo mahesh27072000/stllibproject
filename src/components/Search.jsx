@@ -8,15 +8,21 @@ import BookList from "./BookList";
 import Book from "./Book";
 
 const Search = () => {
+    const [notification, setNotification] = useState("Type your search word");
     const [searchWord, setSearchWord] = useState("");
     const [returnBooks, setReturnBooks] = useState([]);
     const postLink = `https://library-project-api.herokuapp.com/books/search/?search=${searchWord}`;
 
     const onSearch = async () => {
-        console.log("here");
+        setNotification("Loading...");
         try {
             const response = await axios.get(postLink);
+            console.log(response);
+            setNotification("Loading...");
             setReturnBooks(response.data);
+            if (response.data.length === 0) {
+                setNotification("Opps! Book Currently Unavailable");
+            }
         } catch (err) {
             console.log("Search", err);
         }
@@ -58,14 +64,6 @@ const Search = () => {
                     </div>
                 </article>
 
-                {false ? (
-                    <div className="book_not_found">
-                        Opps! Book Currently Unavailable
-                    </div>
-                ) : (
-                    ""
-                )}
-
                 {returnBooks.length !== 0 ? (
                     <BookList heading="Available Books">
                         {returnBooks?.map((book) => (
@@ -78,7 +76,7 @@ const Search = () => {
                         ))}
                     </BookList>
                 ) : (
-                    ""
+                    <div className="notification_info">{notification}</div>
                 )}
             </main>
             <Footer />
