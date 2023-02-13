@@ -39,7 +39,6 @@ const SignUp = () => {
         try {
             const response = await axios.post(postLink, post);
             console.log(response);
-            setItem("user", response.data);
             navigate("/login");
         } catch (err) {
             setInfo(`Please fill form with appropriate data.

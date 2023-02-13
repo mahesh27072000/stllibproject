@@ -6,5 +6,10 @@ const getItem = (key) => {
     const items = JSON.parse(localStorage.getItem(key));
     return items;
 };
-const appLocalStorage = { getItem, setItem };
+
+const removeItem = (key) => {
+    localStorage.removeItem(key);
+};
+
+const appLocalStorage = { getItem, setItem, removeItem };
 export default appLocalStorage;
