@@ -5,10 +5,7 @@ const Footer = () => {
         <footer>
             <div className="footer_container">
                 <div className="logo">WebLib</div>
-                <ul>
-                    <li>Search</li>
-                    <li>Cart</li>
-                </ul>
+
                 <div className="copyright">All right reserved &copy;2023 </div>
             </div>
         </footer>

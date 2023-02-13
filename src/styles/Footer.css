@@ -2,19 +2,15 @@
     background-color: hsl(233, 26%, 24%);
     color: hsl(0, 0%, 100%);
     font-size: 1.2rem;
-    padding: 3rem 0 5rem;
+    padding: 3rem 0;
     text-align: center;
-}
-
-.footer_container ul {
-    margin: 1.5rem 0;
-    list-style: none;
 }
 
 .footer_container .logo {
     font-family: "DM Serif Display", serif;
     font-size: 1.5rem;
     font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -25,10 +21,8 @@
         justify-content: space-between;
     }
 
-    .footer_container ul {
-        column-gap: 2rem;
-        display: flex;
-        margin: 0;
+    .footer_container .logo {
+        margin-bottom: 0;
     }
 }
 
