@@ -18,7 +18,10 @@ const Header = () => {
                         <a href="/"> Home</a>
                     </li>
                     <li className="middle">
-                        <a href="/search"> Search</a>
+                        <a href="/search">Search</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard">Dashboard</a>
                     </li>
                 </ul>
                 {/* Buttons for Sign up and Log in */}
@@ -31,7 +34,7 @@ const Header = () => {
                     </a>
                 </div>
             </div>
-
+            
             {/* Container for mobile screens */}
             <div className="nav_container_mobile nav_container">
                 {/* Logo */}
@@ -50,7 +53,10 @@ const Header = () => {
                                 <a href="/"> Home</a>
                             </li>
                             <li className="middle">
-                                <a href="/search"> Search</a>
+                                <a href="/search">Search</a>
+                            </li>
+                            <li>
+                                <a href="/dashboard">Dashboard</a>
                             </li>
                         </ul>
                         {/* Buttons for Sign up and Log in */}

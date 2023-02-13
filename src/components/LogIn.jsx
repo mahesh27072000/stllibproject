@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Form from "./Form";
+import appLocalStorage from "./localStorage";
+import Notification from "./Notification";
+
+const { setItem } = appLocalStorage;
 
 const LogIn = () => {
     const navigate = useNavigate();
 
-    const [errorMessage, setErrorMessage] = useState("");
-    console.log(errorMessage);
+    const [info, setInfo] = useState("");
+
     const [formField, setFormField] = useState({
         username: "",
         password: "",
@@ -17,18 +21,17 @@ const LogIn = () => {
         username: formField.username,
         password: formField.password,
     };
-    const setItem = (key, value) => {
-        localStorage.setItem(key, JSON.stringify(value));
-    };
+
     const postLink = `https://library-project-api.herokuapp.com/login/`;
 
     const submitLoginForm = async () => {
-        console.log("here");
+        setInfo("Loading...");
+
         try {
             const response = await axios.post(postLink, post);
 
             if (response.data.error === "Invalid credentials") {
-                setErrorMessage(response.data.error);
+                setInfo(response.data.error);
             } else {
                 setItem("user", response.data);
                 navigate("/dashboard");
@@ -41,6 +44,7 @@ const LogIn = () => {
     return (
         <Form>
             <div className="form_and_lower form_and_lower_login">
+                <Notification info={info} />
                 <div className="form">
                     <h1>Log In</h1>
                     <div className="input_field">

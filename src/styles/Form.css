@@ -23,7 +23,12 @@
     margin-top: 2rem;
 }
 
-.form input[type="text"] {
+.input_field_add_book {
+    width: clamp(18rem, 50vw, 35rem);
+}
+
+.form input[type="text"],
+.form input[type="date"] {
     background-color: hsl(0, 0%, 100%);
     border: 1px solid hsl(233, 26%, 24%);
     border-radius: 1rem;
@@ -61,6 +66,13 @@
 
 .form_and_lower_login {
     max-width: 36rem;
+}
+
+@media screen and (max-width: 660px) {
+    .add_new_books {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 @media screen and (max-width: 325px) {

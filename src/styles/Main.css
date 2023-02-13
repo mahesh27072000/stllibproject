@@ -1,3 +1,7 @@
+main {
+    min-height: 95vh;
+}
+
 .main_container {
     color: hsl(233, 26%, 24%);
     padding: 6rem 1.6rem 2rem;
@@ -36,6 +40,7 @@ h1 {
         display: flex;
         justify-content: center;
         padding: 3.5rem 0;
+        margin: 0 clamp(3rem, 5vw, 6rem);
     }
 
     .main_container .text_container {

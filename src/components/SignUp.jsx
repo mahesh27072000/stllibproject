@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Form from "./Form";
+import appLocalStorage from "./localStorage";
+import Notification from "./Notification";
+
+// local storage
+const { setItem } = appLocalStorage;
 
 const SignUp = () => {
-    const [items, setItems] = useState([]);
-    const [errorMessage, setErrorMessage] = useState("");
+    const [info, setInfo] = useState("");
     const navigate = useNavigate();
-    console.log(items);
     const [formField, setFormField] = useState({
         username: "",
         email: "",
@@ -26,34 +29,28 @@ const SignUp = () => {
         is_staff: formField.identity === "user" ? false : true,
     };
 
-    useEffect(() => {
-        localStorage.setItem("items", JSON.stringify(items));
-    }, [items]);
-
     const postLink =
         formField.identity === "user"
             ? `https://library-project-api.herokuapp.com/library-members/`
             : "https://library-project-api.herokuapp.com/library-staff-members/";
 
     const submitSignUpForm = async () => {
-        console.log("here");
+        setInfo("Loading...");
         try {
             const response = await axios.post(postLink, post);
-            if (response.data.error === "Invalid credentials") {
-                setErrorMessage(response.data.error);
-            } else {
-                setItems(response.data);
-                navigate("/dashboard");
-            }
+            console.log(response);
+            setItem("user", response.data);
+            navigate("/login");
         } catch (err) {
+            setInfo(`Please fill form with appropriate data.
+            Username must only be letters, numbers, and @/./+/-/_ characters.`);
             console.log("sign up", err);
         }
     };
 
-    console.log(items);
-
     return (
         <Form>
+            <Notification info={info} />
             <div className="form_and_lower">
                 <div className="form">
                     <h1>Sign up</h1>

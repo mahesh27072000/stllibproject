@@ -5,16 +5,18 @@ import React from "react";
 import axios from "axios";
 import Footer from "./Footer";
 import BookList from "./BookList";
+import Book from "./Book";
 
 const Search = () => {
     const [searchWord, setSearchWord] = useState("");
-    const postLink = `https://library-project-api.herokuapp.com/login/books/search/?search=${searchWord}`;
+    const [returnBooks, setReturnBooks] = useState([]);
+    const postLink = `https://library-project-api.herokuapp.com/books/search/?search=${searchWord}`;
 
     const onSearch = async () => {
         console.log("here");
         try {
             const response = await axios.get(postLink);
-            console.log(response.data);
+            setReturnBooks(response.data);
         } catch (err) {
             console.log("Search", err);
         }
@@ -56,14 +58,28 @@ const Search = () => {
                     </div>
                 </article>
 
-                <article>
-                    <BookList
-                        heading="Available Books"
-                        title="title"
-                        author="Author Rothoa"
-                        button="View details"
-                    />
-                </article>
+                {false ? (
+                    <div className="book_not_found">
+                        Opps! Book Currently Unavailable
+                    </div>
+                ) : (
+                    ""
+                )}
+
+                {returnBooks.length !== 0 ? (
+                    <BookList heading="Available Books">
+                        {returnBooks?.map((book) => (
+                            <Book
+                                key={book.id}
+                                title={book.title}
+                                author={book.author}
+                                book={book}
+                            />
+                        ))}
+                    </BookList>
+                ) : (
+                    ""
+                )}
             </main>
             <Footer />
         </React.Fragment>

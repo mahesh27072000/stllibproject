@@ -2,8 +2,11 @@ import "../styles/Main.css";
 import React from "react";
 import Footer from "./Footer";
 import BookList from "./BookList";
+import Book from "./Book";
+import { useNavigate } from "react-router-dom";
 
-const Main = () => {
+const Main = ({ bookList }) => {
+    const navigate = useNavigate();
     return (
         <React.Fragment>
             <main>
@@ -15,7 +18,12 @@ const Main = () => {
                                 Find books, journals, articles and publications
                                 on this platform
                             </p>
-                            <button className="get_started">Get Started</button>
+                            <button
+                                onClick={() => navigate("/signup")}
+                                className="get_started"
+                            >
+                                Get Started
+                            </button>
                         </div>
 
                         <div className="image_container">
@@ -26,15 +34,16 @@ const Main = () => {
                         </div>
                     </div>
                 </article>
-
-                <article>
-                    <BookList
-                        heading="Available Books"
-                        title="title"
-                        author="Author Rothoa"
-                        button="View details"
-                    />
-                </article>
+                <BookList heading="Available Books">
+                    {bookList?.map((book) => (
+                        <Book
+                            key={book.id}
+                            title={book.title}
+                            author={book.author}
+                            book={book}
+                        />
+                    ))}
+                </BookList>
             </main>
             <Footer />
         </React.Fragment>

@@ -1,19 +1,32 @@
 .booklist_container {
-    margin: 1.5rem 1.6rem;
+    margin: 1.5rem 0;
 }
 
 .books_container {
     margin: 2rem 0;
 }
 
+.books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .book {
     border: 1px solid #d7d7d7;
     margin: 0 0.5rem 1.5rem;
-    width: fit-content;
+    max-width: 16rem;
+    height: 100%;
 }
 
 h2 {
     font-size: clamp(1.5rem, 4vw, 1.8rem);
+    text-align: center;
+}
+
+.book_details_buttons {
+    display: flex;
+    justify-content: center;
 }
 
 .details_and_button {
@@ -22,7 +35,7 @@ h2 {
 }
 
 .book_thumbnail {
-    width: 14rem;
+    width: 100%;
 }
 
 .title {
@@ -40,12 +53,14 @@ h2 {
 
 @media screen and (min-width: 768px) {
     .booklist_container {
-        margin: 3rem;
-    }
-}
-
-@media screen and (min-width: 1050px) {
-    .booklist_container {
         margin: 3rem clamp(3rem, 5vw, 6rem);
+    }
+
+    .book {
+        justify-content: flex-end;
+    }
+
+    h2 {
+        text-align: left;
     }
 }
