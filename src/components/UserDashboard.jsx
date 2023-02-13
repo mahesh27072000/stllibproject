@@ -1,6 +1,7 @@
 import BookList from "./BookList";
 import React, { useEffect, useState } from "react";
 import Book from "./Book";
+import axios from "axios";
 
 import appLocalStorage from "./localStorage";
 
@@ -10,14 +11,25 @@ const changeDateFormat = (date) => {
     return date.split("-").reverse().join("/");
 };
 
-const UserDashboard = ({ bookList, user }) => {
+const UserDashboard = ({ bookList }) => {
     const [userDetails, setUserDetails] = useState(null);
+
+    const deleteReturn = async () => {
+        try {
+            const response = await axios.post(
+                "https://library-project-api.herokuapp.com/returns/"
+            );
+
+            console.log(response.data);
+        } catch (err) {
+            console.log("return", err);
+        }
+    };
 
     useEffect(() => {
         if (getItem("userDetails") !== null) {
             setUserDetails(getItem("userDetails"));
         } else {
-            console.log(getItem("user"));
             setUserDetails(getItem("user").user);
         }
     }, []);
@@ -28,7 +40,7 @@ const UserDashboard = ({ bookList, user }) => {
                 <h2 className="cart_heading">Cart</h2>
 
                 <div className="cart">
-                    <div className="cart_item">
+                    <div className="cart_item_container">
                         <h3>Issues</h3>
                         {userDetails !== null &&
                         userDetails?.issues.length !== 0 ? (
@@ -69,7 +81,7 @@ const UserDashboard = ({ bookList, user }) => {
                 </div>
 
                 <div className="cart">
-                    <div className="cart_item">
+                    <div className="cart_item_container">
                         <h3>Renewals</h3>
                         <div className="cart">
                             {userDetails !== null &&
@@ -116,7 +128,7 @@ const UserDashboard = ({ bookList, user }) => {
                 </div>
 
                 <div className="cart">
-                    <div className="cart_item">
+                    <div className="cart_item_container">
                         <h3>Return</h3>
                         <div className="cart">
                             {userDetails !== null &&
@@ -143,6 +155,12 @@ const UserDashboard = ({ bookList, user }) => {
                                                     item.date_of_return
                                                 )}
                                             </p>
+                                            <button
+                                                onClick={() => deleteReturn()}
+                                                className="link"
+                                            >
+                                                Remove
+                                            </button>
                                         </div>
                                     </div>
                                 ))

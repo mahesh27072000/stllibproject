@@ -13,7 +13,6 @@ const Dashboard = ({ bookList, getBooks }) => {
     useEffect(() => {
         if (getItem("user") !== null) {
             setUser(getItem("user").user);
-            console.log(getItem("user"));
         }
     }, []);
 

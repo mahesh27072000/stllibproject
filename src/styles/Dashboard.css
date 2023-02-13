@@ -19,7 +19,12 @@
     flex-wrap: wrap;
 }
 
+.cart_item_container {
+    margin: 1rem 0;
+}
+
 .cart_item {
+    border: 1px solid #d7d7d7;
     margin: 1rem;
     max-width: 20rem;
 }
