@@ -1,0 +1,14 @@
+.notification {
+    background-color: #d7d7d7;
+    border: 1px solid #d7d7d7;
+    font-size: 0.8rem;
+    padding: 0.5rem 2rem;
+    position: absolute;
+    top: 4.5rem;
+    z-index: 111;
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+}

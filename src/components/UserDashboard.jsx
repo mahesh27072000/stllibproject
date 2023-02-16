@@ -5,7 +5,7 @@ import axios from "axios";
 
 import appLocalStorage from "./localStorage";
 
-const { getItem } = appLocalStorage;
+const { getItem, setItem } = appLocalStorage;
 
 const changeDateFormat = (date) => {
     return date.split("-").reverse().join("/");
@@ -13,14 +13,63 @@ const changeDateFormat = (date) => {
 
 const UserDashboard = ({ bookList }) => {
     const [userDetails, setUserDetails] = useState(null);
+    const [success, setSucess] = useState(true);
 
-    const deleteReturn = async () => {
+    const deleteRenewal = async (item) => {
         try {
-            const response = await axios.post(
-                "https://library-project-api.herokuapp.com/returns/"
+            console.log(item);
+            const response = await axios.delete(
+                `https://library-project-api.herokuapp.com/renewals/${item.id}/`,
+                {
+                    book: item.book,
+                    library_member: item.library_member,
+                    date_of_renewal: item.date_of_renewal,
+                    due_date: item.due_date,
+                }
             );
 
-            console.log(response.data);
+            setItem("userDetails", response.data);
+            setSucess(!success);
+        } catch (err) {
+            console.log("return", err);
+        }
+    };
+
+    const deleteIssue = async (item) => {
+        try {
+            console.log(item);
+            const response = await axios.delete(
+                `https://library-project-api.herokuapp.com/issues/${item.id}/`,
+                {
+                    book: item.book,
+                    library_member: item.library_member,
+                    date_of_issue: item.date_of_issue,
+                    due_date: item.due_date,
+                }
+            );
+
+            setItem("userDetails", response.data);
+            setSucess(!success);
+        } catch (err) {
+            console.log("return", err);
+        }
+    };
+
+    const deleteReturn = async (item) => {
+        console.log("here");
+        try {
+            const response = await axios.delete(
+                `https://library-project-api.herokuapp.com/returns/${item.id}/`,
+                {
+                    book: item.book,
+                    library_member: item.library_member,
+                    date_of_return: item.date_of_return,
+                }
+            );
+
+            console.log(getItem("user"));
+            setItem("userDetails", response.data);
+            setSucess(!success);
         } catch (err) {
             console.log("return", err);
         }
@@ -28,11 +77,13 @@ const UserDashboard = ({ bookList }) => {
 
     useEffect(() => {
         if (getItem("userDetails") !== null) {
+            console.log("yes");
             setUserDetails(getItem("userDetails"));
         } else {
             setUserDetails(getItem("user").user);
+            console.log("no");
         }
-    }, []);
+    }, [success]);
 
     return (
         <React.Fragment>
@@ -42,6 +93,7 @@ const UserDashboard = ({ bookList }) => {
                 <div className="cart">
                     <div className="cart_item_container">
                         <h3>Issues</h3>
+
                         {userDetails !== null &&
                         userDetails?.issues.length !== 0 ? (
                             userDetails?.issues.map((item) => (
@@ -71,6 +123,13 @@ const UserDashboard = ({ bookList }) => {
                                             Date Due:{" "}
                                             {changeDateFormat(item.due_date)}
                                         </p>
+
+                                        <button
+                                            onClick={() => deleteIssue(item)}
+                                            className="link"
+                                        >
+                                            Remove
+                                        </button>
                                     </div>
                                 </div>
                             ))
@@ -83,9 +142,10 @@ const UserDashboard = ({ bookList }) => {
                 <div className="cart">
                     <div className="cart_item_container">
                         <h3>Renewals</h3>
+
                         <div className="cart">
                             {userDetails !== null &&
-                            userDetails.returns.length !== 0 ? (
+                            userDetails.renewals.length !== 0 ? (
                                 userDetails.renewals?.map((item) => (
                                     <div className="cart_item" key={item.id}>
                                         <img
@@ -115,6 +175,15 @@ const UserDashboard = ({ bookList }) => {
                                                     item.due_date
                                                 )}
                                             </p>
+
+                                            <button
+                                                onClick={() =>
+                                                    deleteRenewal(item)
+                                                }
+                                                className="link"
+                                            >
+                                                Remove
+                                            </button>
                                         </div>
                                     </div>
                                 ))
@@ -155,8 +224,11 @@ const UserDashboard = ({ bookList }) => {
                                                     item.date_of_return
                                                 )}
                                             </p>
+
                                             <button
-                                                onClick={() => deleteReturn()}
+                                                onClick={() =>
+                                                    deleteReturn(item)
+                                                }
                                                 className="link"
                                             >
                                                 Remove

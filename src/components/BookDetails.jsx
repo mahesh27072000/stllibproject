@@ -59,7 +59,7 @@ const BookDetails = () => {
             );
             setItem("userDetails", response.data.library_member);
             setInfo("Sucessful");
-            console.log(response.data);
+
             setButtonInput({ ...buttonInput, clicked: false });
         } catch (err) {
             setInfo(
@@ -85,9 +85,9 @@ const BookDetails = () => {
                 "https://library-project-api.herokuapp.com/issues/",
                 postIssues
             );
-            setItem("userDetails", response.data.library_member);
+
             setInfo("Sucessful");
-            console.log(response.data);
+            setItem("userDetails", response.data.library_member);
             setButtonInput({ ...buttonInput, clicked: false });
         } catch (err) {
             setInfo(

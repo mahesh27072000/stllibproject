@@ -16,10 +16,8 @@ const authVerify = (navigate) => {
 
     if (user) {
         const decodedJwt = parseJwt(user.access);
-        console.log(decodedJwt);
 
         if (decodedJwt.exp * 1000 < Date.now()) {
-            console.log("here");
             localStorage.clear();
             navigate("/");
         } else {
