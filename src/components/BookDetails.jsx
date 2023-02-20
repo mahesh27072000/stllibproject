@@ -27,7 +27,8 @@ const BookDetails = () => {
         setInfo("Loading...");
         try {
             const response = await axios.post(
-                "https://library-project-api.herokuapp.com/returns/",
+                // "http://127.0.0.1:8000/returns/",
+                "http://127.0.0.1:8000/returns/",
                 postReturn
             );
             setItem("userDetails", response.data.library_member);
@@ -54,7 +55,8 @@ const BookDetails = () => {
         setInfo("Loading...");
         try {
             const response = await axios.post(
-                "https://library-project-api.herokuapp.com/renewals/",
+                // "http://127.0.0.1:8000/renewals/",
+                "http://127.0.0.1:8000/renewals/",
                 postRenewal
             );
             setItem("userDetails", response.data.library_member);
@@ -82,7 +84,8 @@ const BookDetails = () => {
         setInfo("Loading...");
         try {
             const response = await axios.post(
-                "https://library-project-api.herokuapp.com/issues/",
+                // "http://127.0.0.1:8000/issues/",
+                "http://127.0.0.1:8000/issues/",
                 postIssues
             );
 

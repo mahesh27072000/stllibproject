@@ -19,7 +19,7 @@ const UserDashboard = ({ bookList }) => {
         try {
             console.log(item);
             const response = await axios.delete(
-                `https://library-project-api.herokuapp.com/renewals/${item.id}/`,
+                `http://127.0.0.1:8000/renewals/${item.id}/`,
                 {
                     book: item.book,
                     library_member: item.library_member,
@@ -39,7 +39,7 @@ const UserDashboard = ({ bookList }) => {
         try {
             console.log(item);
             const response = await axios.delete(
-                `https://library-project-api.herokuapp.com/issues/${item.id}/`,
+                `http://127.0.0.1:8000/issues/${item.id}/`,
                 {
                     book: item.book,
                     library_member: item.library_member,
@@ -59,7 +59,7 @@ const UserDashboard = ({ bookList }) => {
         console.log("here");
         try {
             const response = await axios.delete(
-                `https://library-project-api.herokuapp.com/returns/${item.id}/`,
+                `http://127.0.0.1:8000/returns/${item.id}/`,
                 {
                     book: item.book,
                     library_member: item.library_member,

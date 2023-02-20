@@ -24,7 +24,7 @@ const StaffDashboard = ({ bookList, getBooks, user }) => {
     const getUsers = async () => {
         try {
             const response = await axios.get(
-                "https://library-project-api.herokuapp.com/user_list/",
+                "http://127.0.0.1:8000/user_list/",
                 {
                     headers: {
                         Authorization: `Bearer ${getItem("user").access}`,
@@ -49,7 +49,7 @@ const StaffDashboard = ({ bookList, getBooks, user }) => {
     const addBooks = async () => {
         try {
             const response = await axios.post(
-                "https://library-project-api.herokuapp.com/books/add/",
+                "http://127.0.0.1:8000/books/add/",
 
                 post
             );
@@ -63,7 +63,7 @@ const StaffDashboard = ({ bookList, getBooks, user }) => {
     const deleteBook = async (id) => {
         try {
             const response = await axios.delete(
-                `https://library-project-api.herokuapp.com/books/${id}/`,
+                `http://127.0.0.1:8000/books/${id}/`,
                 {
                     headers: {
                         Authorization: `Bearer ${getItem("user").access}`,
@@ -81,7 +81,7 @@ const StaffDashboard = ({ bookList, getBooks, user }) => {
     const deleteUser = async (id) => {
         try {
             const response = await axios.delete(
-                `https://library-project-api.herokuapp.com/user/${id}/`,
+                `http://127.0.0.1:8000/user/${id}/`,
                 {
                     headers: {
                         Authorization: `Bearer ${getItem("user").access}`,

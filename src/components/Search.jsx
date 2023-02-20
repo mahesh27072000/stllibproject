@@ -11,7 +11,7 @@ const Search = () => {
     const [notification, setNotification] = useState("Type your search word");
     const [searchWord, setSearchWord] = useState("");
     const [returnBooks, setReturnBooks] = useState([]);
-    const postLink = `https://library-project-api.herokuapp.com/books/search/?search=${searchWord}`;
+    const postLink = `http://127.0.0.1:8000/books/search/?search=${searchWord}`;
 
     const onSearch = async () => {
         setNotification("Loading...");

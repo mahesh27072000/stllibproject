@@ -29,10 +29,14 @@ const SignUp = () => {
         is_staff: formField.identity === "user" ? false : true,
     };
 
+    // const postLink =
+    //     formField.identity === "user"
+    //         ? `http://127.0.0.1:8000/library-members/`
+    //         : "http://127.0.0.1:8000/library-staff-members/";
     const postLink =
-        formField.identity === "user"
-            ? `https://library-project-api.herokuapp.com/library-members/`
-            : "https://library-project-api.herokuapp.com/library-staff-members/";
+    formField.identity === "user"
+             ?'http://127.0.0.1:8000/library-members/':'http://127.0.0.1:8000/library-staff-members/'
+        
 
     const submitSignUpForm = async () => {
         setInfo("Loading...");

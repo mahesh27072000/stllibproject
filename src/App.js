@@ -20,7 +20,8 @@ const App = () => {
     const getBooks = async () => {
         try {
             const response = await axios.get(
-                "https://library-project-api.herokuapp.com/books"
+                // "http://127.0.0.1:8000/books"
+                "http://127.0.0.1:8000/books/"
             );
             setBooksList(response.data);
         } catch (err) {
