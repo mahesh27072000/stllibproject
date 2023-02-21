@@ -116,7 +116,7 @@ const SignUp = () => {
                         <label htmlFor="password">
                             Password
                             <input
-                                type="text"
+                                type="password"
                                 onChange={(event) =>
                                     setFormField({
                                         ...formField,

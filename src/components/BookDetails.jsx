@@ -1,7 +1,7 @@
 import "../styles/BookDetails.css";
 import "../styles/Form.css";
 import Notification from "./Notification";
-import axios from "axios";
+import axios, { Axios } from "axios";
 import appLocalStorage from "./localStorage";
 import React, { useEffect, useState } from "react";
 
@@ -25,6 +25,7 @@ const BookDetails = () => {
 
     const returnBook = async () => {
         setInfo("Loading...");
+
         try {
             const response = await axios.post(
                 // "http://127.0.0.1:8000/returns/",
@@ -33,13 +34,14 @@ const BookDetails = () => {
             );
             setItem("userDetails", response.data.library_member);
             setInfo("Sucessful");
-            console.log(response.data);
+
         } catch (err) {
+
             setInfo(
-                "Unsucessful! Note:You can't perform this operation twice "
+                err?.response?.data?.error
             );
 
-            console.log("return", err);
+
         }
     };
 
@@ -65,7 +67,7 @@ const BookDetails = () => {
             setButtonInput({ ...buttonInput, clicked: false });
         } catch (err) {
             setInfo(
-                "Unsucessful! Note:You can't perform this operation twice "
+                err?.response?.data?.error
             );
             setButtonInput({ ...buttonInput, clicked: false });
             console.log("renew", err);
@@ -119,17 +121,15 @@ const BookDetails = () => {
                 <div className="book_details">
                     <h2>{getItem("book")?.title}</h2>
                     <p>{getItem("book")?.author}</p>
-                    <p>
+                    {/* <p>
                         {getItem("book")?.number_of_copies > 1
-                            ? `${
-                                  getItem("book")?.number_of_copies
-                              } copies available`
-                            : `${
-                                  getItem("book")?.number_of_copies
-                              } copy available`}
-                    </p>
+                            ? `${getItem("book")?.number_of_copies
+                            } copies available`
+                            : `${getItem("book")?.number_of_copies
+                            } copy available`}
+                    </p> */}
                 </div>
-                {console.log(user)}
+                
                 <div className="lower">
                     {user.is_staff ? (
                         ""
@@ -179,7 +179,8 @@ const BookDetails = () => {
                                     <label htmlFor="due_date">
                                         Due Date
                                         <input
-                                            type="date"
+                                            type="date" 
+                                            min={new Date().toISOString().split("T")[0]}
                                             onChange={(event) =>
                                                 setDueDate({
                                                     ...dueDate,

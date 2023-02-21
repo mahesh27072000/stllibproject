@@ -28,7 +28,9 @@
 }
 
 .form input[type="text"],
-.form input[type="date"] {
+.form input[type="date"],
+.form input[type="password"]
+ {
     background-color: hsl(0, 0%, 100%);
     border: 1px solid hsl(233, 26%, 24%);
     border-radius: 1rem;

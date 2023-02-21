@@ -43,7 +43,7 @@ const StaffDashboard = ({ bookList, getBooks, user }) => {
         author: formField.author,
         ISBN: formField.ISBN,
         publication_date: formField.publication_date,
-        number_of_copies: formField.number_of_copies,
+        number_of_copies:0,
     };
 
     const addBooks = async () => {
@@ -213,7 +213,7 @@ const StaffDashboard = ({ bookList, getBooks, user }) => {
                             />
                         </label>
 
-                        <label htmlFor="number_of_copies">
+                        {/* <label htmlFor="number_of_copies">
                             Number of Copies
                             <input
                                 type="text"
@@ -225,7 +225,7 @@ const StaffDashboard = ({ bookList, getBooks, user }) => {
                                     })
                                 }
                             />
-                        </label>
+                        </label> */}
 
                         <button
                             className="sign_up_button"
