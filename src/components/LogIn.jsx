@@ -67,6 +67,7 @@ const LogIn = () => {
                             Password
                             <input
                                 type="password"
+                                placeholder="password"
                                 onChange={(event) =>
                                     setFormField({
                                         ...formField,
