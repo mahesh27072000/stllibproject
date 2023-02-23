@@ -11,7 +11,7 @@ const StaffDashboard = ({ bookList, getBooks, user }) => {
     const [info, setInfo] = useState("");
     const [userList, setUserList] = useState([]);
     const [formField, setFormField] = useState({
-        category: "",
+        category: "1",
         title: "",
         author: "",
         ISBN: "",
@@ -145,7 +145,7 @@ const StaffDashboard = ({ bookList, getBooks, user }) => {
                 <div className="form">
                     <h2>Add a book</h2>
                     <div className="input_field input_field_add_book">
-                        <label htmlFor="category">
+                        {/* <label htmlFor="category">
                             Category
                             <input
                                 type="text"
@@ -157,7 +157,7 @@ const StaffDashboard = ({ bookList, getBooks, user }) => {
                                     })
                                 }
                             />
-                        </label>
+                        </label> */}
                         <label htmlFor="title">
                             Title
                             <input
